@@ -36,7 +36,7 @@ Please read and reference the following as your progress through this course.
 **In the space provided below, what are three things that still remain unclear or need further explanation?**
 
 
-**YOUR ANSWER HERE**
+How efficient is the python interpreter in a notebook, compared to using python in a cli? how does jupyter notebook handle version changes in python? do notebooks support other languages?
 
 
 ## Exercises 1-7
@@ -47,45 +47,71 @@ For the following exercises please read the Python appendix in the Marsland text
 
 ```python
 # YOUR SOLUTION HERE
-#a=1000
-print('this is my answer',a+1) 
+a = np.ones((6,4)) * 2
+print(a)
 ```
 
 ## Exercise 2
 
 ```python
 # YOUR SOLUTION HERE
-a=2000
+import numpy as np
+b = np.ones((6, 4)) + (np.eye(6, 4) * 2)
+print(b)
+
 ```
 
 ## Exercise 3
 
-```python
-# YOUR SOLUTION HERE
+```
+the dot product doesn't work because the two inner dimensions on the dot product have to be the same (i.e. axb * bxa). a * b just multiplies the values at each location
 ```
 
 ## Exercise 4
 
 ```python
-# YOUR SOLUTION HERE
+print(np.dot(np.transpose(a), b))
+print(np.dot(a,np.transpose(b)))
+# transposing an array makes it a completely different array, causing different operations for each cell
 ```
 
 ## Exercise 5
 
 ```python
-# YOUR SOLUTION HERE
+def f():
+  print("this is my function")
+f()
 ```
 
 ## Exercise 6
 
 ```python
-# YOUR SOLUTION HERE
+def rand():
+    c = np.random.randint(0,10,(5, 5))
+    print(c)
+    print("sum: " + str(np.sum(c)))
+    print("mean: " + str(np.sum(c)/25))
+rand()
+rand()
+rand()
 ```
 
 ## Exercise 7
 
 ```python
-# YOUR SOLUTION HERE
+def count_one(arr):
+    count = 0;
+    for a in range(len(arr)):
+        if(arr[a] == 1):
+            count += 1
+    return count
+
+def count_one_better(arr):
+    c = np.where(arr == 1, arr, 0)
+    return np.sum(c)
+    
+print(count_one_better(np.arange(10)))
+print(count_one(np.arange(10)))
 ```
 
 ## Excercises 8-???
