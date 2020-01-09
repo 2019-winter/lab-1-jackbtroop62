@@ -47,6 +47,8 @@ For the following exercises please read the Python appendix in the Marsland text
 
 ```python
 # YOUR SOLUTION HERE
+
+import numpy as np
 a = np.ones((6,4)) * 2
 print(a)
 ```
@@ -55,7 +57,6 @@ print(a)
 
 ```python
 # YOUR SOLUTION HERE
-import numpy as np
 b = np.ones((6, 4)) + (np.eye(6, 4) * 2)
 print(b)
 
@@ -64,7 +65,7 @@ print(b)
 ## Exercise 3
 
 ```
-the dot product doesn't work because the two inner dimensions on the dot product have to be the same (i.e. axb * bxa). a * b just multiplies the values at each location
+a*b does element by element multiplication. matrix multiplication requires the inner dimensions must match.
 ```
 
 ## Exercise 4
@@ -122,14 +123,18 @@ While the Marsland book avoids using another popular package called Pandas, we w
 Repeat exercise A.1 from Marsland, but create a Pandas DataFrame instead of a NumPy array.
 
 ```python
-# YOUR SOLUTION HERE
+import pandas as pd
+import numpy as np
+a = pd.DataFrame(pd.DataFrame(np.ones((6, 4)) * 2, columns=list('ABCD')))
+print(a)
 ```
 
 ## Exercise 9
 Repeat exercise A.2 using a DataFrame instead.
 
 ```python
-# YOUR SOLUTION HERE
+a = pd.DataFrame(pd.DataFrame(np.ones((6, 4)) + (np.eye(6, 4) * 2), columns=list('ABCD')))
+print(a)
 ```
 
 ## Exercise 10
@@ -163,15 +168,16 @@ Notice how we have nice headers and mixed datatypes? That is one of the reasons 
 How do you select the ``name`` column without using .iloc?
 
 ```python
-## YOUR SOLUTION HERE
+
+titanic_df['name']
 ```
 
 ## Exercise 13
 After setting the index to ``sex``, how do you select all passengers that are ``female``? And how many female passengers are there?
 
 ```python
-## YOUR SOLUTION HERE
-titanic_df.set_index('sex',inplace=True)
+titanic_df.set_index('sex', inplace=True)
+titanic_df.loc['female']
 ```
 
 ## Exercise 14
